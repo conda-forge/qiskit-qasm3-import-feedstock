@@ -1,5 +1,5 @@
 {% set name = "qiskit-qasm3-import" %}
-{% set version = "0.5.1" %}
+{% set version = "0.6.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/qiskit_qasm3_import-{{ version }}.tar.gz
-  sha256: 334fff0080667fe9cb39e807b0875a2658b01d33b4c964a8816411b30938c107
+  sha256: 6b763ee58538b33eaf5aaa8126b687f3c03f26c4d28e6a4f04f9be24a6b184ff
 
 build:
   noarch: python
