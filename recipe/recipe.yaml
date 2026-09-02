@@ -1,0 +1,48 @@
+schema_version: 1
+
+context:
+  name: qiskit-qasm3-import
+  version: "0.6.0"
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/qiskit_qasm3_import-${{ version }}.tar.gz
+  sha256: 6b763ee58538b33eaf5aaa8126b687f3c03f26c4d28e6a4f04f9be24a6b184ff
+
+build:
+  number: 1
+  noarch: python
+  script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+
+requirements:
+  host:
+    - python ${{ python_min }}
+    - setuptools
+    - wheel
+    - pip
+  run:
+    - python >=${{ python_min }}
+    - qiskit >=0.37.0
+    - openqasm3 <2.0,>=0.4
+
+tests:
+  - python:
+      imports:
+        - qiskit_qasm3_import
+      pip_check: true
+      python_version:
+        - ${{ python_min }}
+        - "*"
+
+about:
+  summary: Importer for parsing OpenQASM 3 strings into Qiskit circuits
+  license: Apache-2.0
+  license_file: LICENSE
+  homepage: https://github.com/Qiskit/qiskit-qasm3-import
+
+extra:
+  recipe-maintainers:
+    - wshanks
